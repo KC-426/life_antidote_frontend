@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.83f65a9b.css",
+    "main.js": "/static/js/main.b15fdb84.js",
+    "static/js/787.1199a6d1.chunk.js": "/static/js/787.1199a6d1.chunk.js",
+    "static/media/uploadimage.gif": "/static/media/uploadimage.e024ccbb24e36171779d.gif",
+    "static/media/searchnotfound.gif": "/static/media/searchnotfound.1fb0bf186ad3f532197a.gif",
+    "static/media/medicalbanner2.jpg": "/static/media/medicalbanner2.83742c0c27ae7e8a3014.jpg",
+    "static/media/lock2.png": "/static/media/lock2.7abc5033225317f5e1a9.png",
+    "static/media/life_antidote.png": "/static/media/life_antidote.e3c71b34b721ebbe99c7.png",
+    "index.html": "/index.html",
+    "static/media/No_image.svg": "/static/media/No_image.1edd6fd364814829a6a7f0133e3bcf0b.svg",
+    "main.83f65a9b.css.map": "/static/css/main.83f65a9b.css.map",
+    "main.b15fdb84.js.map": "/static/js/main.b15fdb84.js.map",
+    "787.1199a6d1.chunk.js.map": "/static/js/787.1199a6d1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83f65a9b.css",
+    "static/js/main.b15fdb84.js"
+  ]
+}
