@@ -51,7 +51,7 @@ function EnquiryPreview(props) {
       </IconButton>
     </div>
     <div className='enquiry-content-box' > 
-    <p className='enquiry-preview-detail' >Name : <span className='enquiry-details-preview-content' >Lexi Lun</span> </p>
+    <p className='enquiry-preview-detail' >Name : <span className='enquiry-details-preview-content' >Mayank </span> </p>
     <p className='enquiry-preview-detail' >Phone Number : <span className='enquiry-details-preview-content font-capitalize-case ' >+91-87990098987</span> </p>
     <p className='enquiry-preview-detail' >Product Code : <span className='enquiry-details-preview-content' >DOCR21	</span> </p>
     <p className='enquiry-preview-detail' >Product Name : <span className='enquiry-details-preview-content' >LIVT500 ML</span> </p>
