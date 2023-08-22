@@ -115,7 +115,7 @@ const headCells = [
   },
   {
     id: ' Product code',
-    numeric: false,
+    numeric:false,
     disablePadding: true,
     label: 'Product Code',
   },
