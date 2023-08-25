@@ -52,6 +52,7 @@ import searchNotFound from "../assests/searchnotfound.gif";
 import { addDays } from "date-fns";
 import {
   convertDateForOrder,
+  convertDate,
   getGapBetweenDates,
 } from "../global/globalFunctions";
 import SideDrawer from "../global/Drawer";
@@ -352,6 +353,7 @@ export default function EnhancedTable() {
   const ref2 = useRef(null);
   const [drawerEditOrders, setDrawerEditOrders] = React.useState(false);
   const [openEnquiryPreview, setOpenEnquiryPreview] = useState(false);
+  const [previewData, setPreviewData] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [render, setRender] = useState(false);
@@ -395,7 +397,7 @@ export default function EnhancedTable() {
       .then((res) => {
         console.log(res);
         setAllOrders(res?.data?.allOrders);
-        setOrdersCount(res?.data?.ordersCount);
+        // setOrdersCount(res?.data?.ordersCount);
         setOrderStatusFilter(res?.data?.order_status);
 
         setLoading(false);
@@ -418,7 +420,7 @@ export default function EnhancedTable() {
       .then((res) => {
         console.log(res);
         setAllOrders(res?.data);
-        setOrdersCount(res.data?.length || 0);
+        // setOrdersCount(res.data?.length || 0);
         setLoading(false);
       })
       .catch((err) => {
@@ -443,7 +445,7 @@ export default function EnhancedTable() {
       .then((res) => {
         console.log(res);
         setAllOrders(res?.data);
-        setOrdersCount(res?.data?.length);
+        // setOrdersCount(res?.data?.length);
         setLoading(false);
       })
       .catch((err) => {
@@ -642,6 +644,12 @@ export default function EnhancedTable() {
     setOpenEnquiryPreview(false);
   }
 
+  function handleOpenEnquiryPreview(data) {
+    setOpenEnquiryPreview(true);
+    setPreviewData(data)
+  }
+
+
   // Fetching Data
   const [minData, setMainData] = useState([]);
 
@@ -650,7 +658,8 @@ export default function EnhancedTable() {
       const url = `${process.env.REACT_APP_BACKEND_URL}/api/get/enquiry`;
       const res = await axios.get(url);
 
-      setMainData(res.data.data);
+      setMainData(res.data.data?.reverse());
+      setOrdersCount(res.data.data?.length);
     } catch (error) {
       console.log(error);
     }
@@ -665,6 +674,7 @@ export default function EnhancedTable() {
       <LoadingSpinner loading={loading} />
       <EnquiryPreview
         open={openEnquiryPreview}
+        previewData={previewData}
         handleClose={handleCloseEnquiryPreview}
       />
       <div className="custom-conatiner">
@@ -998,9 +1008,9 @@ export default function EnhancedTable() {
                             {row?.product_detail?.product_code}
                           </TableCell>
 
-                          <TableCell align="center"> LIVT500 ML </TableCell>
+                          <TableCell align="center">{row?.product_detail?.product_name}</TableCell>
                           <TableCell align="center">
-                            {new Date(row?.product_detail?.createdAt).getDate()}
+                            {/* {new Date(row?.product_detail?.createdAt).getDate()}
                             /
                             {new Date(
                               row?.product_detail?.createdAt
@@ -1008,14 +1018,16 @@ export default function EnhancedTable() {
                             /
                             {new Date(
                               row?.product_detail?.createdAt
-                            ).getFullYear()}
+                            ).getFullYear()} */}
+                            {convertDate(row?.createdAt)}
+                            {/* {convertDate(row?.product_detail?.createdAt)} */}
                             -
                             {new Date(
-                              row?.product_detail?.createdAt
+                              row?.createdAt
                             ).getHours()}
                             :
                             {new Date(
-                              row?.product_detail?.createdAt
+                              row?.createdAt
                             ).getMinutes()}
 
 {/* {new Date(row?.product_detail?.createdAt)}
@@ -1038,7 +1050,7 @@ export default function EnhancedTable() {
                             <VisibilityIcon
                               style={{ cursor: "pointer" }}
                               fontSize="small"
-                              onClick={() => setOpenEnquiryPreview(true)}
+                              onClick={() => handleOpenEnquiryPreview(row)}
                             />
                           </TableCell>
                         </TableRow>

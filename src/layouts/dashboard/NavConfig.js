@@ -32,6 +32,12 @@ const navConfig = [
     path: '/dashboard/categories',
     icon: getIcon('material-symbols:category-rounded'),
   },
+{
+title: "Brands",
+path: '/dashboard/brands',
+icon: getIcon('eva:image-fill')
+},
+
   {
     title: 'Products',
     path: '/dashboard/products',

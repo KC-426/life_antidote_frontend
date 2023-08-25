@@ -51,13 +51,29 @@ function EnquiryPreview(props) {
       </IconButton>
     </div>
     <div className='enquiry-content-box' > 
-    <p className='enquiry-preview-detail' >Name : <span className='enquiry-details-preview-content' >Mayank </span> </p>
-    <p className='enquiry-preview-detail' >Phone Number : <span className='enquiry-details-preview-content font-capitalize-case ' >+91-87990098987</span> </p>
-    <p className='enquiry-preview-detail' >Product Code : <span className='enquiry-details-preview-content' >DOCR21	</span> </p>
-    <p className='enquiry-preview-detail' >Product Name : <span className='enquiry-details-preview-content' >LIVT500 ML</span> </p>
-    <p className='enquiry-preview-detail' >Date & Time : <span className='enquiry-details-preview-content' >23-August-2023,9:00 PM </span> </p>
+    <p className='enquiry-preview-detail' >Name : <span className='enquiry-details-preview-content' >{props?.previewData?.name} </span> </p>
+    <p className='enquiry-preview-detail' >Phone Number : <span className='enquiry-details-preview-content font-capitalize-case ' >+91-{props?.previewData?.phone_no}</span> </p>
+    <p className='enquiry-preview-detail' >Product Code : <span className='enquiry-details-preview-content' >{props?.previewData?.product_detail?.product_code}	</span> </p>
+    <p className='enquiry-preview-detail' >Product Name : <span className='enquiry-details-preview-content' >{props?.previewData?.product_detail?.product_name}</span> </p>
+    <p className='enquiry-preview-detail' >Date & Time : <span className='enquiry-details-preview-content' >{new Date(props?.previewData?.product_detail?.createdAt).getDate()}
+    /
+    {new Date(
+      props?.previewData?.product_detail?.createdAt
+    ).getMonth()}
+    /
+    {new Date(
+      props?.previewData?.product_detail?.createdAt
+    ).getFullYear()}
+    -
+    {new Date(
+      props?.previewData?.product_detail?.createdAt
+    ).getHours()}
+    :
+    {new Date(
+      props?.previewData?.product_detail?.createdAt
+    ).getMinutes()}</span> </p>
     <p className='enquiry-preview-detail' >Message : </p>
-   <div className='enquiry-message-box' > <p className='enquiry-details-preview-content font-capitalize-case ' > It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p></div>
+   <div className='enquiry-message-box' > <p className='enquiry-details-preview-content font-capitalize-case ' > {props?.previewData?.message} </p></div>
 
          <div className='text-algin-center confirm-button-popup ' >
           {/* <Button variant='text' onClick={props.handleClose}  >{props.cancelBtnName}</Button> */}

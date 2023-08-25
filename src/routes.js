@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Products from './pages/Products';
 import Orders from './pages/Orders';
 import Category from './pages/Category';
+import Brands from './pages/Brands';
 import ProtectedRoute from './utils/ProtectedRoute';
 import Banners from './pages/Banners';
 import AvailableDoctors from './pages/AvailableDoctors';
@@ -36,6 +37,7 @@ export default function Router() {
      {/* <Route path="/dashboard/wholesale-enquiries" element={ <DashboardLayout Component={<WholesaleEnquiry />} />} /> */}
      {/* <Route path="/dashboard/vendor" element={ <DashboardLayout Component={<Vendor/>} />}/> */}
      <Route path="/dashboard/categories" element={ <DashboardLayout Component={<Category/>} />} />
+     <Route path="/dashboard/brands" element={ <DashboardLayout Component={<Brands/>} />} />
      <Route path="/dashboard/banners" element={ <DashboardLayout Component={<Banners/>} />} />
    
       </Route>
