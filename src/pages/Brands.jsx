@@ -702,7 +702,7 @@ export default function Brands() {
                               {returnFileName(row?.main_category_image?.image_name)}
                             </TableCell>
 
-                            <TableCell align="center">
+                            <TableCell align="center" >
                               {convertDate(row?.updatedAt)}
                             </TableCell>
                             {/* <TableCell align="right">{row.total_products}</TableCell> */}
