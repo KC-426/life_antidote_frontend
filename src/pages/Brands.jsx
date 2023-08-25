@@ -134,12 +134,12 @@ const headCells = [
     label: "Brand Name",
   },
 
-    {
-      id: 'publish_date',
-      numeric: true,
-      disablePadding: false,
-      label: 'Publish date ',
-    },
+  {
+    id: "publish_date",
+    numeric: true,
+    disablePadding: false,
+    label: "Publish date ",
+  },
   {
     id: "shop_contact",
     numeric: true,
@@ -197,28 +197,32 @@ function EnhancedTableHead(props) {
             }}
           />
         </TableCell>
-        {headCells.map((headCell) => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? "center" : "left"}
-            padding={headCell.disablePadding ? "none" : "none"}
-            sortDirection={orderBy === headCell.id ? order : false}
-            sx={{ textTransform: "uppercase" }}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : "asc"}
-              onClick={createSortHandler(headCell.id)}
+        {headCells.map((headCell) => {
+          return (
+            <TableCell
+              key={headCell.id}
+              align={headCell.numeric ? "center" : "left"}
+              padding={headCell.disablePadding ? "none" : "none"}
+              sortDirection={orderBy === headCell.id ? order : false}
+              sx={{ textTransform: "uppercase" }}
             >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
-                </Box>
-              ) : null}
-            </TableSortLabel>
-          </TableCell>
-        ))}
+              <TableSortLabel
+                active={orderBy === headCell.id}
+                direction={orderBy === headCell.id ? order : "asc"}
+                onClick={createSortHandler(headCell.id)}
+              >
+                {headCell.label}
+                {orderBy === headCell.id ? (
+                  <Box component="span" sx={visuallyHidden}>
+                    {order === "desc"
+                      ? "sorted descending"
+                      : "sorted ascending"}
+                  </Box>
+                ) : null}
+              </TableSortLabel>
+            </TableCell>
+          );
+        })}
       </TableRow>
     </TableHead>
   );
@@ -368,21 +372,22 @@ export default function Brands() {
   // ================== GET ALL B ==============
   useEffect(() => {
     setLoading(true);
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/get/brand`, { withCredentials: true })
-      .then(res => {
-        console.log('start', res?.data?.findBrands?.main_category_image);
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/get/brand`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("start", res?.data?.findBrands?.main_category_image);
         setData(res?.data?.findBrands);
         setCountVendor(res?.data?.length);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         setLoading(false);
       });
   }, [render]);
   // ================== GET ALL Banners ==============
-
-  
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -681,7 +686,10 @@ export default function Brands() {
                               padding="none"
                               style={{ textTransform: "capitalize" }}
                             >
-                              <a target="_blank" href={row?.main_category_image?.image_url}>
+                              <a
+                                target="_blank"
+                                href={row?.main_category_image?.image_url}
+                              >
                                 <img
                                   className="banner-table-image"
                                   alt="product"
@@ -699,10 +707,12 @@ export default function Brands() {
                               style={{ textTransform: "capitalize" }}
                               align="left"
                             >
-                              {returnFileName(row?.main_category_image?.image_name)}
+                              {returnFileName(
+                                row?.main_category_image?.image_name
+                              )}
                             </TableCell>
 
-                            <TableCell align="center" >
+                            <TableCell align="center">
                               {convertDate(row?.updatedAt)}
                             </TableCell>
                             {/* <TableCell align="right">{row.total_products}</TableCell> */}
