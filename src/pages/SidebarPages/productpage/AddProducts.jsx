@@ -23,6 +23,7 @@ function AddProducts({handleClose}) {
    const [ mainCategory,setMainCategory ] = useState([]);
    const [ category,setCategory ] = useState([]);
    const [ subCategory,setSubCategory ] = useState([]);
+   const [brand, setBrand] = useState([]);
    const [message ,setMessage] = useState({type:"",message:""})
    const [ loading, setLoading  ] =useState(false)
    const [fileUpload , setFileUpload ] = useState()
@@ -294,6 +295,45 @@ const handleCloseSnackbar = (event, reason) => {
                     </TextField>
                     </div>
 
+
+                    <div className="add_product_label_input">
+                  <label htmlFor=""> Select Brand </label>
+                  <TextField
+                    labelId="demo-select-small"
+                    id="demo-select-small"
+                    className="select_field"
+                    name="product_brand"
+                    style={{ textTransform: "capitalize" }}
+                    value={productData?.product_brand}
+                    onChange={handleChange}
+                    select
+                    SelectProps={{
+                      isNative: true,
+                      MenuProps: {
+                        PaperProps: {
+                          style: {
+                            maxHeight: 250,
+                            width: 250,
+                          },
+                        },
+                      },
+                    }}
+                  >
+                  
+                    <MenuItem value="choose_brand">
+                      Choose your Brand
+                    </MenuItem>
+                    {brand?.map((value, index) => (
+                      <MenuItem
+                        key={value._id}
+                        style={{ textTransform: "capitalize" }}
+                        value={value?._id}
+                      >
+                        {value?._id}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </div>
                     {/* <div className='flex' style={{width:'100%',gap:'10px'}} >
                   <div className='add_product_label_input' style={{width:'100%'}} >
                     <label htmlFor=""> Color  </label>
